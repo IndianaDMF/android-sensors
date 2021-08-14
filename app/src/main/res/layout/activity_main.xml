@@ -6,13 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+    </LinearLayout>
+
     <TextView
         android:id="@+id/gyroLbl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:fontFamily="sans-serif-medium"
-        android:text="Gyro Sensor: "
+        android:text="@string/gyro_lbl"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.069"
@@ -24,7 +37,7 @@
         android:layout_width="126dp"
         android:layout_height="25dp"
         android:fontFamily="sans-serif-condensed"
-        android:text="NaN"
+        android:text="@string/default_lbl_val"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/gyroLbl"
         app:layout_constraintTop_toBottomOf="@+id/gyroLbl" />
@@ -36,7 +49,7 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="10dp"
         android:fontFamily="sans-serif-medium"
-        android:text="Light Sensor: "
+        android:text="@string/light_sensor_lbl"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.07"
@@ -44,13 +57,23 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/accelerometerLbl"
+        android:id="@+id/lightSensor"
+        android:layout_width="126dp"
+        android:layout_height="25dp"
+        android:fontFamily="sans-serif-condensed"
+        android:text="@string/default_lbl_val"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/lightSensorLbl"
+        app:layout_constraintTop_toBottomOf="@+id/lightSensorLbl" />
+
+    <TextView
+        android:id="@+id/xlbl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="15dp"
         android:fontFamily="sans-serif-medium"
-        android:text="Accelerometer: "
+        android:text="Side Motion (x)"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.638"
@@ -58,24 +81,57 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/lightSensor"
-        android:layout_width="126dp"
-        android:layout_height="25dp"
-        android:fontFamily="sans-serif-condensed"
-        android:text="NaN"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/lightSensorLbl"
-        app:layout_constraintTop_toBottomOf="@+id/lightSensorLbl" />
-
-    <TextView
-        android:id="@+id/accelerometer"
+        android:id="@+id/x_motion"
         android:layout_width="141dp"
         android:layout_height="25dp"
         android:fontFamily="sans-serif-condensed"
-        android:text="NaN"
+        android:text="@string/default_lbl_val"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/accelerometerLbl"
-        app:layout_constraintTop_toBottomOf="@+id/accelerometerLbl" />
+        app:layout_constraintStart_toStartOf="@+id/xlbl"
+        app:layout_constraintTop_toBottomOf="@+id/xlbl" />
+
+    <TextView
+        android:id="@+id/yLbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Forward Motion (y)"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.638"
+        app:layout_constraintStart_toStartOf="@+id/x_motion"
+        app:layout_constraintTop_toBottomOf="@+id/x_motion" />
+
+    <TextView
+        android:id="@+id/zLbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
+        android:text="Height Motion (z)"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/y_motion"
+        app:layout_constraintTop_toBottomOf="@+id/y_motion" />
+
+    <TextView
+        android:id="@+id/y_motion"
+        android:layout_width="141dp"
+        android:layout_height="25dp"
+        android:fontFamily="sans-serif-condensed"
+        android:text="@string/default_lbl_val"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/yLbl"
+        app:layout_constraintTop_toBottomOf="@+id/yLbl" />
+
+    <TextView
+        android:id="@+id/z_motion"
+        android:layout_width="141dp"
+        android:layout_height="25dp"
+        android:fontFamily="sans-serif-condensed"
+        android:text="@string/default_lbl_val"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/zLbl"
+        app:layout_constraintTop_toBottomOf="@+id/zLbl" />
 
     <Button
         android:id="@+id/start"
@@ -84,7 +140,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginBottom="20dp"
         android:onClick="resumeReading"
-        android:text="Start"
+        android:text="@string/start_btn_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -95,19 +151,20 @@
         android:layout_marginEnd="192dp"
         android:layout_marginBottom="20dp"
         android:onClick="pauseReading"
-        android:text="Pause"
+        android:text="@string/pause_btn_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/start" />
 
     <Button
-        android:id="@+id/debug"
+        android:id="@+id/sensor_check"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="15dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
-        android:onClick="debug"
-        android:text="Debug"
+        android:onClick="checkSensors"
+        android:text="Sensors"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
